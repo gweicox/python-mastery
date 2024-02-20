@@ -1,7 +1,15 @@
 
-with open("Data/portfolio.dat") as f:
-    data = f.read().strip()
-    data = [line.split()[1:] for line in data.splitlines()]
-    res = sum(int(row[0]) * float(row[1]) for row in data)
+def portfolio_cost(filename):
+    with open(filename, "r") as f:
+        data = f.read().strip().splitlines()
+        acc = 0
+        for line in data:
+            ticker, number, price = line.split()
+            try:
+                number, price = int(number), float(price)
+                acc += number * price
+            except ValueError as e:
+                print(f"Couldn't parse: {line}\nReason: {e}")
+    return acc
 
-print(res)
+print(portfolio_cost('Data/portfolio3.dat'))
