@@ -12,4 +12,6 @@ def portfolio_cost(filename):
                 print(f"Couldn't parse: {line}\nReason: {e}")
     return acc
 
-print(portfolio_cost('Data/portfolio3.dat'))
+
+if __name__ == "__main__":
+    print(portfolio_cost('Data/portfolio.dat'))
